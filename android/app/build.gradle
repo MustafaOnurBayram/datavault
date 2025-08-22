@@ -1,0 +1,42 @@
+plugins {
+    id "com.android.application"
+    id "org.jetbrains.kotlin.android"
+    // Flutter Gradle Plugin Android + Kotlin’den sonra gelmeli
+    id "dev.flutter.flutter-gradle-plugin"
+    // Firebase için gerekli
+}
+
+android {
+    namespace "com.mustafaonur.datavault"
+    compileSdkVersion 35
+
+    defaultConfig {
+        applicationId "com.mustafaonur.datavault"
+        minSdkVersion 23
+        targetSdkVersion 35
+        versionCode flutter.versionCode.toInteger()
+        versionName flutter.versionName
+    }
+
+    ndkVersion flutter.ndkVersion
+
+    buildTypes {
+        release {
+            // Şimdilik debug keystore kullanıyoruz
+            signingConfig signingConfigs.debug
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+flutter {
+    source "../.."
+}
